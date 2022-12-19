@@ -51,25 +51,19 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+         {{- with .Values.livenessProbe }}
           livenessProbe:
-            httpGet:
-              path: /locomotive/
-              port: shopinvader
-            failureThreshold: 2
-            periodSeconds: 5
-            initialDelaySeconds: 15
+              {{- toYaml . | nindent 14 }}
+           {{- end }}
+          {{- with .Values.readinessProbe }}
           readinessProbe:
-            httpGet:
-              path: /locomotive/
-              port: shopinvader
-            initialDelaySeconds: 15
-            periodSeconds: 10
+              {{- toYaml . | nindent 14 }}
+          {{- end }}
+          {{- with .Values.startupProbe }}
           startupProbe:
-            httpGet:
-              path: /locomotive/
-              port: shopinvader
-            failureThreshold: 30
-            periodSeconds: 10
+              {{- toYaml . | nindent 14 }}
+           {{- end }}
+
           ports:
             - name: shopinvader
               containerPort: 3000
