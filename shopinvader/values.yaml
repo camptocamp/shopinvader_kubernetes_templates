@@ -82,6 +82,36 @@ resources:
   requests:
     memory: 10Mi
 
+
+livenessProbe:
+  httpGet:
+    path: /locomotive/
+    port: shopinvader
+  failureThreshold: 30
+  periodSeconds: 10
+  initialDelaySeconds: 15
+  timeoutSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /locomotive/
+    port: shopinvader
+  failureThreshold: 30
+  periodSeconds: 10
+  initialDelaySeconds: 15
+  timeoutSeconds: 10
+
+startupProbe:
+  httpGet:
+    path: /locomotive/
+    port: shopinvader
+  failureThreshold: 30
+  periodSeconds: 10
+  initialDelaySeconds: 15
+  timeoutSeconds: 10
+
+
+
 autoscaling:
   enabled: false
   minReplicas: 1
