@@ -33,7 +33,7 @@ spec:
       services:
         - name: {{ $svcName }}
           port: 80
-      priority: 1
+      priority: {{ .priority }} 
   tls:
     store: 
       name: default

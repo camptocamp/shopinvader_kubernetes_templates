@@ -63,11 +63,13 @@ ingressRouteClient: {}
   #hosts:
   # - "ingress-for-client.local"
   #pathPrefix: '/'
+  #priority: 2 
 
 ingressRouteInternal: {}
   #hosts:
   # - "ingress-for-c2c.local"
   #pathPrefix: '/'
+  #priority: 2
 
 issuerRef: letsencrypt-prod
 
@@ -80,7 +82,7 @@ resources:
   #   cpu: 100m
   #   memory: 128Mi
   requests:
-    memory: 10Mi
+    memory: 11Mi
 
 
 livenessProbe:
