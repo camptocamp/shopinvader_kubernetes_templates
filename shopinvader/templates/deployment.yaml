@@ -71,7 +71,7 @@ spec:
             - configMapRef:
                 name: shopinvader-config
             - secretRef:
-                name: shopinvader-secret
+                name: shopinvader-app-secret
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
